@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    
+    <MainBoolfix/>
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-
+import MainBoolfix from "./components/MainBoolfix.vue"
 export default {
   name: 'App',
   components: {
     // HelloWorld
+    MainBoolfix,
   }
 }
 </script>
