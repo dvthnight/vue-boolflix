@@ -7,6 +7,7 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import MainBoolfix from "./components/MainBoolfix.vue"
+
 export default {
   name: 'App',
   components: {
@@ -17,6 +18,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./assets/scss/common.scss";
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

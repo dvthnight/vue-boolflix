@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <main>
         <BarraRicerca/>
         <ListaFilm/>
-    </div>
+    </main>
 </template>
 
 <script>
@@ -28,5 +28,5 @@ export default {
 
 
 <style lang="scss" scoped>
-
+    
 </style>
