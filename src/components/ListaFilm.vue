@@ -17,10 +17,11 @@
                     <li>
                         <h3 class="titolo_el" >Lingua</h3>
                         <!-- <div class="el_lista">`{{bandiera}}</div> -->
-                        <figure>
-                            <img :src="bandiera(film)" alt="">
+                        <!-- <figure>
+                            <img :src="bandierine(film.original_language)" alt="">
 
-                        </figure>
+                        </figure> -->
+                        <div class="el_lista bandierina">{{bandierine(film.original_language)}}</div>
                     </li>
                     <li>
                         <h3 class="titolo_el" >Voto</h3>
@@ -44,7 +45,8 @@
                     </li> -->
                     <li>
                         <h3 class="titolo_el" >Lingua</h3>
-                        <div class="el_lista">{{serie.original_language}}</div>
+                            <div class="el_lista bandierina">{{bandierine(serie.original_language)}}</div>
+
                     </li>
                     <li>
                         <h3 class="titolo_el" >Voto</h3>
@@ -59,6 +61,8 @@
 <script>
 // import state from "../store"
 import axios from "axios"
+import getUnicodeFlagIcon from 'country-flag-icons/unicode'
+import { hasFlag } from 'country-flag-icons'
 export default {
 
     data(){
@@ -103,6 +107,13 @@ export default {
             })
            
     },
+
+    bandierine: function(lingua){
+        if(hasFlag(lingua.toUpperCase())){
+            return getUnicodeFlagIcon(lingua);
+        }
+        return lingua;
+    }
 
     // bandiera: function(film){
     //     const lingua = film.original_language;
@@ -174,11 +185,15 @@ export default {
                     margin-bottom: 10px;
                 }
 
-                figure {
-                    width: 100%;
-                    display: flex;
-                    justify-content: center;
+                .bandierina{
+                    font-size: 30px;
                 }
+
+                // figure {
+                //     width: 100%;
+                //     display: flex;
+                //     justify-content: center;
+                // }
             }
         
         }
