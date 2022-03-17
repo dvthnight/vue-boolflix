@@ -6,6 +6,9 @@
             <h2>Film</h2>
             <div class="container_card">
                 <ul v-for="film in films" :key="film.id" class="card">
+                    <li class="contenitore_locandina">
+                        <img :src="'https://image.tmdb.org/t/p/w185/'+film.poster_path" alt="" class="el_lista locandina" >
+                    </li>
                     <li>
                         <h3 class="titolo_el" >Titolo</h3>
                         <div class="el_lista">{{film.title}}</div>
@@ -35,6 +38,10 @@
             <h2>serie</h2>
             <div class="container_card">
                 <ul v-for="serie in series" :key="serie.id" class="card">
+                    <li class="contenitore_locandina">
+                        <img :src="'https://image.tmdb.org/t/p/w185/'+serie.poster_path" alt="" class="el_lista locandina" >
+
+                    </li>
                     <li>
                         <h3 class="titolo_el" >Titolo</h3>
                         <div class="el_lista">{{serie.name}}</div>
@@ -167,7 +174,7 @@ export default {
                 border: 3px solid rgb(199, 1, 1);
                 padding: 10px;
                 width: 20%;
-                height: 30rem;
+                // height: 30rem;
                 display: flex;
                 justify-content: center;
                 flex-direction: column;  
@@ -194,6 +201,11 @@ export default {
                 //     display: flex;
                 //     justify-content: center;
                 // }
+            }
+
+            .contenitore_locandina{
+                display: flex;
+                justify-content: center;
             }
         
         }
