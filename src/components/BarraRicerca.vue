@@ -28,6 +28,6 @@ export default {
 
 <style lang="scss" scoped>
 .cerca_input{
-    margin-bottom: 30px;
+    
 }
 </style>

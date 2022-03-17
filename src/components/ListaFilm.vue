@@ -1,73 +1,77 @@
 <template>
     <div class="container">
-        
+
         <div class="film">
             <h2>Film</h2>
             <div class="container_card">
-                <ul v-for="film in films" :key="film.id" class="card">
-                    <li class="contenitore_locandina">
-                        <img :src="'https://image.tmdb.org/t/p/w185/'+film.poster_path" alt="" class="el_lista locandina" >
-                    </li>
-                    <li>
-                        <h3 class="titolo_el" >Titolo</h3>
-                        <div class="el_lista">{{film.title}}</div>
-                    </li>
-                    <li>
-                        <h3 class="titolo_el" >Titolo Originale</h3>
-                        <div class="el_lista">{{film.original_title}}</div>
-                    </li>
-                    <li>
-                        <h3 class="titolo_el" >Lingua</h3>
-                        <!-- <div class="el_lista">`{{bandiera}}</div> -->
-                        <!-- <figure>
-                            <img :src="bandierine(film.original_language)" alt="">
+                <div v-for="film in films" :key="film.id" class="card">
+                    <div class="contenitore_locandina">
+                        <img :src="'https://image.tmdb.org/t/p/w342/'+film.poster_path" alt="" class="el_lista locandina" >
+                    </div>
+                    <ul class="dati">
+                        <li >
+                            <h3 class="titolo_el" >Titolo</h3>
+                            <div class="el_lista">{{film.title}}</div>
+                        </li>
+                        <li >
+                            <h3 class="titolo_el" >Titolo Originale</h3>
+                            <div class="el_lista">{{film.original_title}}</div>
+                        </li>
+                        <li >
+                            <h3 class="titolo_el" >Lingua</h3>
+                            <!-- <div class="el_lista">`{{bandiera}}</div> -->
+                            <!-- <figure>
+                                <img :src="bandierine(film.original_language)" alt="">
 
-                        </figure> -->
-                        <div class="el_lista bandierina">{{bandierine(film.original_language)}}</div>
-                    </li>
-                    <li>
-                        <h3 class="titolo_el" >Voto</h3>
-                        <div class="contenitore_stelle">
-                            <div class="el_lista stelle" >
-                                <i v-for="n in 5" :key="n" class="fa-star" :class="n <= votoFilm(film) ? 'fa-solid gold' : 'fa-regular'"></i>
+                            </figure> -->
+                            <div class="el_lista bandierina">{{bandierine(film.original_language)}}</div>
+                        </li>
+                        <li >
+                            <h3 class="titolo_el" >Voto</h3>
+                            <div class="contenitore_stelle">
+                                <div class="el_lista stelle" >
+                                    <i v-for="n in 5" :key="n" class="fa-star" :class="n <= votoFilm(film) ? 'fa-solid gold' : 'fa-regular'"></i>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <div class="serie">
             <h2>serie</h2>
             <div class="container_card">
-                <ul v-for="serie in series" :key="serie.id" class="card">
-                    <li class="contenitore_locandina">
-                        <img :src="'https://image.tmdb.org/t/p/w185/'+serie.poster_path" alt="" class="el_lista locandina" >
+                <div v-for="serie in series" :key="serie.id" class="card">
+                    <div class="contenitore_locandina">
+                        <img :src="'https://image.tmdb.org/t/p/w342/'+serie.poster_path" alt="" class="el_lista locandina" >
 
-                    </li>
-                    <li>
-                        <h3 class="titolo_el" >Titolo</h3>
-                        <div class="el_lista">{{serie.name}}</div>
-                    </li>
-                    <!-- <li>
-                        <h3 class="titolo_el" >Titolo Originale</h3>
-                        <div class="el_lista">{{serie.origin_country}}</div>
-                    </li> -->
-                    <li>
-                        <h3 class="titolo_el" >Lingua</h3>
-                            <div class="el_lista bandierina">{{bandierine(serie.original_language)}}</div>
+                    </div>
+                    <ul class="dati">
+                        <li>
+                            <h3 class="titolo_el" >Titolo</h3>
+                            <div class="el_lista">{{serie.name}}</div>
+                        </li>
+                        <!-- <li>
+                            <h3 class="titolo_el" >Titolo Originale</h3>
+                            <div class="el_lista">{{serie.origin_country}}</div>
+                        </li> -->
+                        <li >
+                            <h3 class="titolo_el" >Lingua</h3>
+                                <div class="el_lista bandierina">{{bandierine(serie.original_language)}}</div>
 
-                    </li>
-                    <li>
-                        <h3 class="titolo_el" >Voto</h3>
-                            <div class="contenitore_stelle">
-                                <div class="el_lista stelle">
-                                    <i v-for="n in 5" :key="n" class="fa-star" :class="n <= votoSerie(serie) ? 'fa-solid gold' : 'fa-regular'"></i>
+                        </li>
+                        <li >
+                            <h3 class="titolo_el" >Voto</h3>
+                                <div class="contenitore_stelle">
+                                    <div class="el_lista stelle">
+                                        <i v-for="n in 5" :key="n" class="fa-star" :class="n <= votoSerie(serie) ? 'fa-solid gold' : 'fa-regular'"></i>
+                                    </div>
                                 </div>
-                            </div>
 
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -88,7 +92,7 @@ export default {
 
     data(){
         return{
-            
+
         }
     },
 
@@ -107,7 +111,7 @@ export default {
     },
 
     methods:{
-        
+
 
     bandierine: function(lingua){
         if(hasFlag(lingua.toUpperCase())){
@@ -149,19 +153,22 @@ export default {
 
 
 <style lang="scss" scoped>
-    
+
 
     .container{
-        height: 100vh;
+        height: calc(100vh - 100px);
         // width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         // flex-wrap: wrap;
         padding: 20px;
-        
 
-        
+        .film, .serie{
+            height: 700px;
+            margin-left: 100px;
+        }
+
 
         .container_card{
             display: flex;
@@ -171,17 +178,22 @@ export default {
             align-items: center;
             width: 100vw;
             overflow: auto;
+            margin-bottom: 20px;
 
 
             .card{
-                border: 3px solid rgb(199, 1, 1);
-                padding: 10px;
-                width: 20%;
+                // border: 3px solid rgb(199, 1, 1);
+                // padding: 10px;
                 // height: 30rem;
                 display: flex;
                 justify-content: center;
-                flex-direction: column;  
+                flex-direction: column;
 
+
+                .dati{
+                    display: none;
+                }
+                
                 .titolo_el{
                     text-transform: uppercase;
                     text-align: center;
@@ -199,6 +211,9 @@ export default {
                     font-size: 30px;
                 }
 
+               
+
+
                 // figure {
                 //     width: 100%;
                 //     display: flex;
@@ -206,22 +221,37 @@ export default {
                 // }
             }
 
-            .contenitore_locandina, .contenitore_stelle{
-                display: flex;
-                justify-content: center;    
+            .card:hover{
+                cursor: pointer;
             }
 
-           
+            .card:hover .dati{
+                display: block;
+                height: 523px;
+                width: 342px;
+            }
+
+            .card:hover .locandina{
+                display: none;
+            }
+
+            .contenitore_locandina, .contenitore_stelle{
+                display: flex;
+                justify-content: center;
+            }
+
+
             .gold{
                 color: gold;
             }
-            
-        
+
+
         }
 
         h2{
             text-transform: uppercase;
-            text-align: center;
+            font-size: 2rem;
+            // text-align: center;
         }
     }
 </style>
