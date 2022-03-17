@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <input type="text" v-model="cerca" @keyup.enter="filtraFilm" class="cerca_input">
         
         <div class="film">
             <h2>Film</h2>
@@ -76,57 +75,39 @@
 
 <script>
 // import state from "../store"
-import axios from "axios"
+// import axios from "axios"
+// import BarraRicerca from "./BarraRicerca.vue"
+import state from "../store"
 import getUnicodeFlagIcon from 'country-flag-icons/unicode'
 import { hasFlag } from 'country-flag-icons'
+
 export default {
+    components:{
+        // BarraRicerca,
+    },
 
     data(){
         return{
-            films: [],
-            series: [],
-            cerca:" ",
-            baseURL: "https://api.themoviedb.org/3"
+            
         }
     },
 
     computed: {
-       
+       cerca: function(){
+           return state.cerca;
+       },
+
+       films: function(){
+           return state.films
+       },
+
+       series: function(){
+           return state.series
+       }
     },
 
     methods:{
-        filtraFilm: function(){
-            axios.get(`${this.baseURL}/search/movie`,{
-                params:{
-                    api_key: "9857cfb37fc41b760e69c70f6d75b517",
-                    query: this.cerca,
-                    language: "it-IT"
-                }
-            })
-            .then(res => {
-                console.log(res.data)
-                this.films = res.data.results
-            })
-            .catch( error =>{
-                console.log(error.response)
-            })
-
-            axios.get(`${this.baseURL}/search/tv`,{
-                params:{
-                    api_key: "9857cfb37fc41b760e69c70f6d75b517",
-                    query: this.cerca,
-                    language: "it-IT"
-                }
-            })
-            .then(res => {
-                console.log(res.data)
-                this.series = res.data.results
-            })
-            .catch( error =>{
-                console.log(error.response)
-            })
-           
-    },
+        
 
     bandierine: function(lingua){
         if(hasFlag(lingua.toUpperCase())){
@@ -178,9 +159,7 @@ export default {
         // flex-wrap: wrap;
         padding: 20px;
 
-        .cerca_input{
-            margin-bottom: 30px;
-        }
+        
 
         .container_card{
             display: flex;
