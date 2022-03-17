@@ -28,7 +28,11 @@
                     </li>
                     <li>
                         <h3 class="titolo_el" >Voto</h3>
-                        <div class="el_lista">{{film.vote_average}}</div>
+                        <div class="contenitore_stelle">
+                            <div class="el_lista stelle" >
+                                <i v-for="n in 5" :key="n" class="fa-star" :class="n <= votoFilm(film) ? 'fa-solid' : 'fa-regular'"></i>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -57,7 +61,12 @@
                     </li>
                     <li>
                         <h3 class="titolo_el" >Voto</h3>
-                        <div class="el_lista">{{serie.vote_average}}</div>
+                            <div class="contenitore_stelle">
+                                <div class="el_lista stelle">
+                                    <i v-for="n in 5" :key="n" class="fa-star" :class="n <= votoSerie(serie) ? 'fa-solid' : 'fa-regular'"></i>
+                                </div>
+                            </div>
+
                     </li>
                 </ul>
             </div>
@@ -79,6 +88,10 @@ export default {
             cerca:" ",
             baseURL: "https://api.themoviedb.org/3"
         }
+    },
+
+    computed: {
+       
     },
 
     methods:{
@@ -120,7 +133,14 @@ export default {
             return getUnicodeFlagIcon(lingua);
         }
         return lingua;
-    }
+    },
+
+     votoFilm: function(film){
+            return Math.ceil(film.vote_average / 2);
+        },
+        votoSerie: function(serie){
+            return Math.ceil(serie.vote_average / 2);
+        }
 
     // bandiera: function(film){
     //     const lingua = film.original_language;
@@ -203,10 +223,14 @@ export default {
                 // }
             }
 
-            .contenitore_locandina{
+            .contenitore_locandina, .contenitore_stelle{
                 display: flex;
                 justify-content: center;
             }
+
+           
+
+            
         
         }
 
