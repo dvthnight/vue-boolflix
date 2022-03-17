@@ -29,7 +29,7 @@
                         <h3 class="titolo_el" >Voto</h3>
                         <div class="contenitore_stelle">
                             <div class="el_lista stelle" >
-                                <i v-for="n in 5" :key="n" class="fa-star" :class="n <= votoFilm(film) ? 'fa-solid' : 'fa-regular'"></i>
+                                <i v-for="n in 5" :key="n" class="fa-star" :class="n <= votoFilm(film) ? 'fa-solid gold' : 'fa-regular'"></i>
                             </div>
                         </div>
                     </li>
@@ -62,7 +62,7 @@
                         <h3 class="titolo_el" >Voto</h3>
                             <div class="contenitore_stelle">
                                 <div class="el_lista stelle">
-                                    <i v-for="n in 5" :key="n" class="fa-star" :class="n <= votoSerie(serie) ? 'fa-solid' : 'fa-regular'"></i>
+                                    <i v-for="n in 5" :key="n" class="fa-star" :class="n <= votoSerie(serie) ? 'fa-solid gold' : 'fa-regular'"></i>
                                 </div>
                             </div>
 
@@ -153,21 +153,25 @@ export default {
 
     .container{
         height: 100vh;
+        // width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         // flex-wrap: wrap;
         padding: 20px;
+        
 
         
 
         .container_card{
             display: flex;
             gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
             align-items: center;
             width: 100vw;
+            overflow: auto;
+
 
             .card{
                 border: 3px solid rgb(199, 1, 1);
@@ -204,11 +208,13 @@ export default {
 
             .contenitore_locandina, .contenitore_stelle{
                 display: flex;
-                justify-content: center;
+                justify-content: center;    
             }
 
            
-
+            .gold{
+                color: gold;
+            }
             
         
         }
